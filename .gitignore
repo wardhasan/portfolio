@@ -1,0 +1,40 @@
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Node modules (if using npm/yarn)
+node_modules/
+
+# Build and production files
+dist/
+build/
+*.log
+
+# Dependency directories and lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Env files (if storing secrets locally)
+.env
+.env.local
+.env.*.local
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Compiled source (e.g., if using SCSS/TypeScript)
+*.css.map
+*.js.map
+
+# Backup files
+*.bak
+*.tmp
+*~
+
+# Git ignore file for public assets not meant to be versioned
+assets/uploads/
+assets/temp/

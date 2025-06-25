@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  
+  <link rel="stylesheet" href="./assets/css/index.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#story">Story</a></li>
+        <li><a href="#tech-stack">Tech stack</a></li>
+        <li><a href="#my-work">My Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="popup-overlay">
+    <div id="popup-message">
+      <p>
+        🌙 Every great story begins in the shadows of the unknown<br><br>
+        This site is my empty stage — soon to echo with code, color, and creation<br><br>
+        The journey begins... now.
+      </p>
+      <button id="popup-close-btn">Step into the prologue</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div>
+      <h1>Hi, Its Ward Hasan</h1>
+      <p>AKA.Bob The Builder</p>
+    </div>
+    <div>
+      <img src="./assets/img/eyes.png"/>
+    </div>
+  </section>
+
+  <!-- why-this-is-created Section -->
+  <section id="story" class="story-section">
+    <div class="story-block">
+      <h4 class="story-heading">The Start</h4>
+      <p>
+        Back in 2013, I made a decision that changed everything—I chose tech. It wasn’t trendy, and I wasn’t even sure it was right for me. But something clicked.
+      </p>
+    </div>
+
+    <div class="story-block">
+      <h4 class="story-heading">Education</h4>
+      <p>
+        I studied Computer Science at JUST University in Jordan (class of 2020), and after a deep dive into NodeJS, I landed my first job as a backend developer.
+      </p>
+    </div>
+
+    <div class="story-block">
+      <h4 class="story-heading">Ambition</h4>
+      <p>
+        The corporate world treated me well, but I’ve always wanted more than a stable job. I wanted to grow, create, and redefine what “developer” means to me.
+      </p>
+    </div>
+
+    <div class="story-block">
+      <h4 class="story-heading">Reality Check</h4>
+      <p>
+        Like many, I’ve dealt with imposter syndrome. I used to shrink my identity to just "backend"—but I’ve learned that what we build and how we think goes far beyond a label.
+      </p>
+    </div>
+
+    <div class="story-block">
+      <h4 class="story-heading">Purpose</h4>
+      <p>
+        This space is my reset button. A place to document, experiment, and share the journey of building, learning, and evolving in tech—and maybe beyond it.
+      </p>
+    </div>
+
+    <p class="journey-cta">Join me in the journey.</p>
+  </section>
+
+
+  <section id="tech-stack">
+    <h2>My Tech Stack</h2>
+    <div class="card-container">
+      
+      <div class="tech-card">
+        <h3>Languages & Frameworks</h3>
+        <ul>
+          <li>JavaScript (Vanilla, jQuery)</li>
+          <li>NodeJS</li>
+          <li>PHP (WordPress)</li>
+          <li>Python (FastAPI)</li>
+          <li>Go</li>
+          <li>Java (Spring Boot)</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Frontend</h3>
+        <ul>
+          <li>HTML, CSS, SCSS</li>
+          <li>React.js</li>
+          <li>Vue.js</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>DevOps & Tools</h3>
+        <ul>
+          <li>Git & GitHub</li>
+          <li>Docker</li>
+          <li>AWS (S3)</li>
+          <li>Jira</li>
+          <li>Figma</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Databases</h3>
+        <ul>
+          <li>MySQL</li>
+          <li>MongoDB</li>
+          <li>DynamoDB</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="my-work">
+    <h2 class="section-title">My Work</h2>
+    <div class="scratchy-type">
+      <span class="typed-text">Coming Soon</span>
+      <span class="blinking-cursor">|</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <h2>(Not Now)</h2>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Bob. All rights reserved.</p>
+  </footer>
+
+  <script src="./assets/scripts/index.js"></script>
+</body>
+</html>
