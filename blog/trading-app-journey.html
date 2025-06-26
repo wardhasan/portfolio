@@ -1,32 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Realities of Being a Dev</title>
-  <link rel="stylesheet" href="../../assets/css/index.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading App Journey | Ward Hasan</title>
+  <link rel="stylesheet" href="../assets/css/footer.css" />
+  <link rel="stylesheet" href="../assets/css/blog.css" />
+
+  <!-- SEO -->
+  <meta name="description" content="A developer’s dive into an abandoned trading app and the harsh truths behind it." />
+  <meta name="author" content="Ward Hasan" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Trading App Journey | Ward Hasan" />
+  <meta property="og:description" content="A developer’s dive into an abandoned trading app and the harsh truths behind it." />
+  <meta property="og:image" content="https://whasanjourney.com/assets/img/eyes.png" />
+  <meta property="og:url" content="https://whasanjourney.com/blog/trading-app-journey.html" />
+  <meta property="og:type" content="article" />
 </head>
-<body>
-  <header>
-    <nav>
-      <a href="/blog">← Back to Blog</a>
+
+<body id="blog-page">
+
+  <!-- Header -->
+  <header class="blog-header">
+    <nav class="blog-nav">
+      <a href="/blog" class="back-home-link">← Back to Blog</a>
     </nav>
   </header>
 
-  <main style="display: flex;">
-    <div style="display: flex; flex-direction: row; background-color: red;">
-      <h1>The Realities of Being a Dev</h1>
-      <p><em>Published: 2025-06-26</em></p>
-      <p>
-        It’s not all hoodies and caffeine. Sometimes, it’s accidentally deleting your production database at 2am.
-      </p>
-      <p>
-        Stay tuned for more stories from the trenches.
-      </p>
-    </div>
+  <!-- Main Post -->
+  <main id="blog-main">
+    <article class="blog-post">
+      <h1 class="post-title">🔧 The Realities of Being a Dev – Digging Up an Old Grave</h1>
+      <p class="post-meta">By Ward Hasan · June 2025</p>
+
+      <section class="post-content">
+        <p>So, I decided to open up an old project — an app I started working on about a year ago</p>
+
+        <p>Due to my long-standing habit of not staying organized with long-term stuff (yes, I’m owning it), things got a little messy</p>
+
+        <p>(And yes, I tend to go into details before getting to the point — so buckle up and dive in with me)</p>
+
+        <p>Here’s what I mean by “not being organized”: When I’m actively working on something, everything feels clear. I know exactly how to navigate it. But once I step away for too long? It’s like I’ve never seen it before. That’s why I’ve recently started adopting proper documentation habits — finally</p>
+
+        <p>Anyway, circling back to the main topic: I found the project! But... when I tried to run it, MySQL threw an error on my system 8)</p>
+
+        <p>And instead of fixing it like a responsible dev, I hyper-fixated on creating this blog instead. :DDDD!!!</p>
+
+        <p>Looking at the bright side — we improved our footer! It's now dynamically loaded as a reusable component</p>
+
+        <p>We added this placeholder in our HTML page:</p>
+        <pre><code>&lt;div id="footer-placeholder"&gt;&lt;/div&gt;</code></pre>
+
+        <p>And this script to handle rendering the footer (we called it <code>load-partials.js</code>):</p>
+
+        <pre><code>
+          function loadHTML(selector, url) {
+            fetch(url)
+              .then(response =&gt; {
+                if (!response.ok) throw new Error(`Failed to load ${url}`);
+                return response.text();
+              })
+              .then(html =&gt; {
+                document.querySelector(selector).innerHTML = html;
+                const shouldShowCards = document.body.classList.contains('showFooterCards');
+                const footerCards = document.querySelector('#footer-cards-wrapper');
+                if (footerCards) {
+                  footerCards.style.display = shouldShowCards ? 'block' : 'none';
+                }
+              })
+              .catch(err =&gt; console.error(err));
+          }
+
+          document.addEventListener("DOMContentLoaded", () =&gt; {
+            const placeholder = document.querySelector("#footer-placeholder");
+            if (!placeholder) return;
+
+            const bodyId = document.body.id;
+            let url;
+
+            if (bodyId === "home-page") {
+              url = "partials/footer.html";
+            } else {
+              url = "../partials/footer.html";
+            }
+
+            loadHTML("#footer-placeholder", url);
+          });
+        </code></pre>
+
+        <p>when it feels happy there this place will be a comfort zone, maybe a greater thing will come from this place.</p>
+
+        <p>This post isn’t just a rant — it’s a love letter to every dev who’s ever been thrown into a digital tomb and told to bring it back to life</p>
+
+        <p><strong>More to come as I polish the bones and maybe turn this ghost into a ghostwriter</strong></p>
+      </section>
+    </article>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Ward Hasan. All rights reserved.</p>
-  </footer>
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+  <script src="../assets/scripts/load-partials.js" defer></script>
 </body>
 </html>
