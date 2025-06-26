@@ -153,3 +153,54 @@ footer {
   background-color: var(--primary-light);
   color: var(--text-dark);
 }
+
+@media (max-width: 768px) {
+  .blog-post {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 8px;
+  }
+
+  .post-title {
+    font-size: 1.6rem;
+  }
+
+  .blog-title {
+    font-size: 2rem;
+  }
+
+  .post-content pre {
+    overflow-x: auto;
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+  }
+
+  .post-content code {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-title,
+  .blog-title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .blog-post {
+    padding: 1rem 0.5rem;
+  }
+
+  .post-content {
+    font-size: 0.95rem;
+  }
+}
+
+
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
