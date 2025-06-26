@@ -9,6 +9,7 @@
   --primary: #b1001c;
   --primary-dark: #730016;
   --primary-soft: #d1354a;
+  --primary-light: #e1e6fa;
 
   --surface-dark: #1e1b29;
   --surface-light: #f2f2f5;
@@ -186,10 +187,37 @@ button:hover {
 /* Footer */
 footer {
   text-align: center;
-  padding: 2rem;
-  background-color: var(--surface-light);
   font-size: 0.9rem;
   color: var(--text-dark);
+  background-color: var(--primary-light);
+}
+
+footer #footer-cards-wrapper {
+  padding: 2rem;
+}
+
+/*footer #footer-cards-wrapper a {
+  color: inherit;
+  display: block;
+  padding: 24px;
+}*/
+
+footer #footer-cards-wrapper a {
+  color: inherit;
+  display: inline-block;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: #fff;
+  text-decoration: none;
+}
+
+/* Optional: hover effect */
+footer #footer-cards-wrapper a:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
 }
 
 /* Story Section */
@@ -427,4 +455,83 @@ footer {
   .story-heading {
     justify-self: center;
   }
+}
+
+/* Blog Page Specific Styles */
+.blog-header {
+  background-color: var(--surface-dark);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.blog-nav {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.back-home-link {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-home-link:hover {
+  color: var(--primary);
+}
+
+#blog-main {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background-color: var(--surface-light);
+  min-height: 80vh;
+}
+
+.blog-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-title {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.blog-post-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0;
+}
+
+.blog-post-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.blog-post-link {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.blog-post-link:hover {
+  color: var(--primary-dark);
 }
