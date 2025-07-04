@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Know Yourself AI | Ward Hasan</title>
+  <link rel="stylesheet" href="../assets/css/footer.css" />
+  <link rel="stylesheet" href="../assets/css/blog.css" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+  <!-- SEO -->
+  <meta name="description" content="How Know Yourself AI went from a quiet idea to a secured, reflective assistant powered by OpenAI – the tech, challenges, and learnings." />
+  <meta name="author" content="Ward Hasan" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Know Yourself AI | Ward Hasan" />
+  <meta property="og:description" content="How Know Yourself AI went from a quiet idea to a secured, reflective assistant powered by OpenAI – the tech, challenges, and learnings." />
+  <meta property="og:image" content="https://whasanjourney.com/assets/img/eyes.png" />
+  <meta property="og:url" content="https://whasanjourney.com/portfolio/blog/know-yourself-ai.html" />
+  <meta property="og:type" content="article" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNVVZ8Z2BC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TNVVZ8Z2BC');
+  </script>
+</head>
+<body id="blog-page">
+  <header class="blog-header">
+    <nav class="blog-nav">
+      <a href="/portfolio/blog/" class="back-home-link">← Back to Blog</a>
+    </nav>
+  </header>
+
+  <main id="blog-main">
+    <article class="blog-post">
+      <h1 class="post-title">Know Yourself AI – A Personal Tool for Clarity</h1>
+      <p class="post-meta">By Ward Hasan · July 2025</p>
+
+      <section class="post-content">
+        <p>This wasn’t just a weekend project. It was born out of a feeling — a weird mix of being overwhelmed by thoughts and wanting to sit with them. So, I started building a tool I personally needed: <strong>Know Yourself AI</strong>.</p>
+
+        <p>A lightweight, no-login, no-judgment assistant that lets you talk to yourself — with a little help from GPT.</p>
+
+        <h2>🎯 The Idea</h2>
+        <p>I didn’t want a chatbot that gives life advice. I wanted a mirror — something that reflects back your own thoughts, nudges you, and helps you connect dots you didn’t realize were scattered.</p>
+
+        <p>So, I wrote a system message: <code>You are a thoughtful, reflective assistant...</code> — and that’s where it began.</p>
+
+        <h2>⚙️ The Tech Stack</h2>
+        <ul>
+          <li><strong>Frontend:</strong> HTML, CSS, Vanilla JS</li>
+          <li><strong>Backend:</strong> FastAPI + Uvicorn</li>
+          <li><strong>Security Layer:</strong> A custom-built proxy API using FastAPI</li>
+          <li><strong>AI:</strong> OpenAI’s GPT-4 API</li>
+          <li><strong>Rate Limiting:</strong> slowapi (FastAPI wrapper)</li>
+          <li><strong>Deployment:</strong> GitHub Pages (Frontend) + Render (Proxy & Backend)</li>
+        </ul>
+
+        <h2>🛡️ Security First</h2>
+        <p>The biggest challenge wasn’t the prompt. It was <em>protecting the key</em>.</p>
+
+        <p>We decided early on that the OpenAI API key should never touch the frontend. Instead, we built a <strong>secure FastAPI backend</strong> and placed a <strong>proxy API layer</strong> between the frontend and the OpenAI service.</p>
+
+        <p>Here’s what we did:</p>
+        <ul>
+          <li>✅ Disabled /docs and /openapi endpoints</li>
+          <li>✅ Added per-IP rate limiting (5 requests/min)</li>
+          <li>✅ Used a <code>X-Frontend-Secret</code> header to validate the source of requests</li>
+          <li>✅ Prevented direct access to backend — only the proxy can talk to it</li>
+          <li>✅ Custom 404s for anyone poking around</li>
+        </ul>
+
+        <h2>🌍 Deploying with Peace of Mind</h2>
+        <p>The frontend lives on <strong>GitHub Pages</strong>, styled with simplicity. The backend and proxy are both hosted on <strong>Render</strong> using their free tier (shoutout to them for making security-friendly deployments that simple).</p>
+
+        <p>Oh, and no frameworks on the frontend. We wanted everything to feel native, personal, and light.</p>
+
+        <h2>💡 Lessons Learned</h2>
+        <ul>
+          <li>🚧 Rate limits are not optional. Even for toy projects.</li>
+          <li>🔐 Never expose secrets — not even once.</li>
+          <li>🧠 Reflection is tech-enabled, but it has to be designed right. Prompt engineering is UX too.</li>
+          <li>📦 A little proxy goes a long way.</li>
+        </ul>
+
+        <p>This wasn’t just a tool. It was a mental health project disguised as a coding sprint.</p>
+
+        <p><strong>Know Yourself AI drops tomorrow.</strong> Quietly. Without a launch party. But with a lot of heart.</p>
+
+        <p>If you ever needed a moment to sit with your thoughts, maybe this can help.</p>
+
+        <p><em>– Ward</em></p>
+      </section>
+    </article>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="../assets/scripts/load-partials.js" defer></script>
+</body>
+</html>
