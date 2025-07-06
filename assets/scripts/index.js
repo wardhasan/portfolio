@@ -52,7 +52,7 @@ function initKnowYourselfAI() {
   });
 }
 
-function processUserInput(form, input, chatWindow) {
+async function processUserInput(form, input, chatWindow) {
   const question = input.value.trim();
   if (!question) return;
 
@@ -80,15 +80,25 @@ function processUserInput(form, input, chatWindow) {
   chatWindow.appendChild(typing);
   chatWindow.scrollTop = chatWindow.scrollHeight;
 
-  setTimeout(() => {
-    typing.remove();
-    const aiReply = generateMockResponse(question);
+  try {
+    const aiReply = await generateAIResponse(question);
+    if(aiReply.error){
+      appendMessage('ai', "⚠️ Something went wrong. Try again later.", chatWindow);  
+    }
+    typing.remove(); // Remove only after getting the reply
     appendMessage('ai', aiReply, chatWindow);
-    input.disabled = false;
-    submitBtn.disabled = false;
-    input.focus();
-  }, 1000);
+  } catch (err) {
+    typing.remove();
+    console.log(err)
+    appendMessage('ai', "⚠️ Something went wrong. Try again later.", chatWindow);
+  }
+
+  input.disabled = false;
+  submitBtn.disabled = false;
+  input.focus();
+  chatWindow.scrollTop = chatWindow.scrollHeight;
 }
+
 
 function appendMessage(role, text, container) {
   const msg = document.createElement('div');
@@ -107,19 +117,47 @@ function appendMessage(role, text, container) {
   container.scrollTop = container.scrollHeight;
 }
 
-function generateMockResponse(input) {
-  const lower = input.toLowerCase();
-  if (lower.includes("stuck")) {
-    return "Let's unpack that. When was the last time you felt truly alive?\nWhat part of your life feels out of sync right now?";
+async function generateAIResponse(input) {
+  const apiUrl = 'https://proxy-backend-portfolio.onrender.com/chat'
+  const frontendSecret = 'wardhasanSecret@123HELLOBOYS';
+
+  const messages = [
+    {
+      role: 'system',
+      content: 'You are a thoughtful, reflective assistant helping users explore their emotions, thoughts, and self-understanding.',
+    },
+    {
+      role: 'user',
+      content: input,
+    }
+  ];
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Frontend-Secret': frontendSecret
+      },
+      body: JSON.stringify({ messages }),
+    });
+
+    const data = await response.json();
+    console.log(data)
+    if (data.reply) {
+      return data.reply.trim();
+    } else if (data.error) {
+      return `⚠️ Error: ${data.error || 'Unknown error'}`;
+    } else {
+      return "🤔 Hmm, I didn't get a clear answer. Try again?";
+    }
+  } catch (error) {
+    console.error('Backend Proxy Error:', error);
+    return "❌ Couldn’t connect to the server. Try again later.";
   }
-  if (lower.includes("confident")) {
-    return "Confidence often comes after action. What's one small risk you could take this week to stretch yourself?";
-  }
-  if (lower.includes("purpose")) {
-    return "Purpose hides in what energizes you. What’s something you do that makes you lose track of time?";
-  }
-  return "Hmm... let's explore that. Can you describe how you feel in a few words?";
 }
+
+
 
 /** === SHARE HANDLER === */
 function handleShareOption(option) {

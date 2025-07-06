@@ -19,7 +19,9 @@ Here’s what’s already live, and what’s coming soon.
 - Google Fonts: Roboto, Permanent Marker
 - Anime-inspired elements & scratchy text animation
 
-### ⚙️ Features
+---
+
+## ⚙️ Features
 - Landing animation popup
 - Responsive hero section with dynamic layout
 - Story timeline (structured narrative blocks)
@@ -29,26 +31,65 @@ Here’s what’s already live, and what’s coming soon.
 
 ---
 
+## 🧠 Know Yourself AI — Reflective Assistant
+
+An interactive experiment inside the portfolio that integrates with an OpenAI-powered FastAPI backend.  
+It helps users explore emotional questions, gain clarity, and reflect — safely, privately, and beautifully.
+
+### 💡 How It Works
+- You type a question (or choose a preset like “I feel stuck”)
+- The frontend sends the prompt to your FastAPI backend
+- The backend securely calls OpenAI and returns a thoughtful reply
+- The conversation is rendered in a stylized, scrollable interface
+- Users can share their reflections via clipboard, text file, email, or WhatsApp
+
+### 🔧 Technologies
+- FastAPI (Python) backend proxy
+- OpenAI API (Chat Completions with GPT-4 or GPT-3.5)
+- Vanilla JavaScript + DOM manipulation
+- Custom dropdown UI & reflection sharing logic
+- CORS-enabled backend communication
+
+### 📦 Local Development (Frontend)
+1. Make sure the FastAPI backend is running at http://localhost:8000  
+2. Open `index.html` in a browser (or use Live Server)  
+3. The AI chat section is under the “My Work” section  
+4. Typing a question will trigger a POST request to `/chat`
+
+> If you're using Live Server, ensure FastAPI CORS includes `http://127.0.0.1:5500`
+
+---
+
 ## 📁 Folder Structure
 
-├── assets/
-│ ├── css/ # Main stylesheet(s)
-│ ├── img/ # Visual assets (e.g. eyes.png)
-│ └── scripts/ # JS interactions
-├── index.html # Homepage
-├── README.md
-├── .gitignore
-└── favicon.ico
+├── assets/  
+│ ├── css/ → Main stylesheets  
+│ ├── img/ → Visual assets (e.g. eyes.png)  
+│ └── scripts/ → JS interactions (chat, dropdowns, partials)  
+├── index.html → Main homepage  
+├── README.md  
+├── .gitignore  
+└── favicon.ico  
 
-----
+---
+
+## 🌐 Deployment Notes
+
+- Frontend can be deployed on GitHub Pages or Netlify
+- Backend must be deployed separately (Render, Railway, Vercel Serverless)
+- When deployed, update the `apiUrl` in `index.js` to your live backend endpoint
+
+---
 
 # 📜 License
-- This project is for personal and educational use. If you’re inspired by the layout or idea, feel free to fork and remix with credit.
 
-----
+This project is for personal and educational use. If you’re inspired by the layout or idea, feel free to fork and remix with credit.
+
+---
 
 ## 🙋‍♂️ Who am I?
-- Hi, I’m Ward — aka “Bob the Builder” when it comes to creative problem-solving.
+
+Hi, I’m Ward — aka “Bob the Builder” when it comes to creative problem-solving.  
 More than just a backend dev, I’m building a space where my tech stories can live and evolve.
 
-- Thanks for visiting. Step into the journey.
+Thanks for visiting. Step into the journey.
