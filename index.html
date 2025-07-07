@@ -198,17 +198,23 @@
         A reflective AI-powered assistant to help users reconnect with themselves, explore their emotional patterns, and gain clarity — powered by thoughtful prompt design.
       </p>
 
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
-        <button data-preset="I feel stuck, what should I do?">I feel stuck</button>
-        <button data-preset="How can I know what I truly want?">Find my purpose</button>
-        <button data-preset="I want to feel more confident">Build confidence</button>
-      </div>
-
       <p style="text-align: center; font-size: 0.9rem; color: #888; margin-top: -1rem; margin-bottom: 1rem;">
         ⏳ You can send up to <strong>5 reflections per minute</strong>. Take your time and reflect deeply.
       </p>
 
-      <div id="chat-window" style="max-width: 700px; margin: auto; background: white; padding: 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15); height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; width:100%"></div>
+
+
+      <div id="chat-window" style="max-width: 700px; margin: auto; background: white; padding: 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15); height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; width:100%">
+        <div id="preset-buttons-wrapper" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+          <button data-preset="What am I avoiding right now?">Me? Avoiding something? Haha... yeah. 😅</button>
+          <button data-preset="Is the path I'm on still right for me?">Just casually questioning my entire life path 🚶‍♂️</button>
+          <button data-preset="What parts of me have I outgrown?">Some parts of me need an upgrade... or a delete key 🗑️</button>
+          <button data-preset="Where do I feel most like myself?">When do I feel like me and not a poorly written side character?</button>
+          <button data-preset="What’s something I haven’t said out loud yet?">Holding in thoughts like it's a sport 🎤🤐</button>
+          <button data-preset="What am I craving that I’m not admitting?">It’s not just pizza. It’s something deeper... probably 🧠🍕</button>
+          <button data-preset="What’s a truth I’ve been resisting?">Let’s poke the uncomfortable truth bear 🐻</button>
+        </div>
+      </div>
 
       <form onsubmit="handleUserInput(event)" style="width: 100%; display: flex; flex-direction: row; max-width: 700px; gap: 0; border: 1px solid #ccc;">
         <input type="text" id="user-input" placeholder="Ask something about yourself..." style="flex: 1; border-radius: 0; border: none;" required />

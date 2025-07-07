@@ -28,6 +28,13 @@ function initKnowYourselfAI() {
   const form = document.querySelector('form');
   const input = document.getElementById('user-input');
   const presetButtons = document.querySelectorAll('[data-preset]');
+  const presetContainer = document.getElementById('preset-buttons-wrapper');
+  const hasUsedPreset = localStorage.getItem('presetUsed');
+
+  // Hide preset buttons if already used in session
+  if (hasUsedPreset && presetContainer) {
+    presetContainer.style.display = 'none';
+  }
 
   if (!chatWindow || !form || !input) return;
 
@@ -38,6 +45,9 @@ function initKnowYourselfAI() {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+    if (!localStorage.getItem('presetUsed')) {
+      hidePresets();
+    }
     processUserInput(form, input, chatWindow);
   });
 
@@ -46,15 +56,33 @@ function initKnowYourselfAI() {
       const text = btn.getAttribute('data-preset');
       if (text) {
         input.value = text;
-        form.requestSubmit();
+        form.requestSubmit(); // only submit, don't hide here
       }
     });
   });
+
+  function hidePresets() {
+    if (presetContainer) {
+      presetContainer.style.display = 'none';
+      presetContainer.querySelectorAll('button').forEach(btn => {
+        btn.disabled = true;
+      });
+      localStorage.setItem('presetUsed', 'true');
+    }
+  }
 }
+
 
 async function processUserInput(form, input, chatWindow) {
   const question = input.value.trim();
   if (!question) return;
+
+  // 💡 Hide presets if visible (first interaction)
+  const presetContainer = document.getElementById('preset-container');
+  if (presetContainer && presetContainer.style.display !== 'none') {
+    presetContainer.style.display = 'none';
+    localStorage.setItem('presetUsed', 'true');
+  }
 
   input.disabled = true;
   const submitBtn = form.querySelector('button[type="submit"]');
@@ -124,7 +152,7 @@ async function generateAIResponse(input) {
   const messages = [
     {
       role: 'system',
-      content: 'You are a thoughtful, reflective assistant helping users explore their emotions, thoughts, and self-understanding.',
+      content: `You are a concise yet emotionally intelligent assistant trained in psychology, self-awareness, and reflective thinking. Your goal is to help users explore thoughts they may not have voiced, patterns they may not have noticed, and emotions they may be overlooking — all through short, deeply insightful replies. Keep answers under 3 sentences. Avoid generic advice; be gently provocative and personal.`,
     },
     {
       role: 'user',
@@ -143,7 +171,6 @@ async function generateAIResponse(input) {
     });
 
     const data = await response.json();
-    console.log(data)
     if (data.reply) {
       return data.reply.trim();
     } else if (data.error) {
