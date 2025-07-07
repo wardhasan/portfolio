@@ -197,7 +197,7 @@ button:hover {
 
 #know-yourself {
   background-color: var(--surface-light);
-  
+  align-items: center;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -725,4 +725,55 @@ button:hover {
 
 .dropdown-toggle.open .arrow {
   transform: translateY(-50%) rotate(-135deg);
+}
+
+.status-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2rem;
+  color: var(--primary);
+  margin: 2rem auto;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  border-left: 6px solid var(--primary-dark);
+  padding-left: 1rem;
+  animation: subtleFadeIn 1s ease-out;
+}
+
+.status-text {
+  border-right: 2px solid rgba(177, 0, 28, 0.4);
+  animation: typing 2s steps(30, end) 1 forwards;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.status-cursor {
+  font-weight: 100;
+  font-size: 2rem;
+  color: var(--primary);
+  margin-left: 6px;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { opacity: 0 }
+}
+
+@keyframes subtleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
